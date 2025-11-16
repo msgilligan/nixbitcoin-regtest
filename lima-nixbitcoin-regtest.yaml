@@ -1,0 +1,46 @@
+images:
+  - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.0.3/nixos-lima-v0.0.3-aarch64.qcow2"
+    arch: "aarch64"
+    digest: "sha512:809bd6bf46e27719eb69cc248e31a6c98725415976f8f0111b86228148a4379ea05e7405930c086487c9d51961e8776f61744175f33423ce3508e74a7f1a87c4"
+  - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.0.3/nixos-lima-v0.0.3-x86_64.qcow2"
+    arch: "x86_64"
+    digest: "sha512:d7e6a9c9519d94e006af40f689b98c235624bcc5c32f13ad4fe6c6ae411db4a1d6f5415135cd06665fc6eccd4c857d64512c28ec76cd04bfdfbd791408c57eb6"
+
+cpus: 8
+
+mounts:
+- location: "/tmp/lima"
+  writable: true
+  9p:
+    cache: "mmap"
+
+memory: 4GiB
+disk: 25GiB
+
+rosetta:
+  enabled: true
+  binfmt: true
+
+networks:
+   - lima: user-v2
+
+portForwards:
+  # RPC
+  - guestPort: 18443
+    hostPort: 18443
+  # P2P
+  - guestPort: 18444
+    hostPort: 18444
+  # ZMQ rawblock and hashblock
+  - guestPort: 38443
+    hostPort: 38443
+  # ZMQ rawtx and hashtx
+  - guestPort: 38444
+    hostPort: 38444
+
+ssh:
+  forwardAgent: true
+
+containerd:
+  system: false
+  user: false

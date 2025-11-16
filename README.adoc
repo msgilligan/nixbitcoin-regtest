@@ -1,0 +1,82 @@
+= nixbitcoin-regtest
+
+This is an experimental project to easily configure, deploy, and maintain a Nix Bitcoin RegTest VM for development purposes. It has been tested using Lima to manage the guest VM.
+
+== Getting Started
+
+=== Launch Nix DevShell
+
+The `flake.nix` file contains a Nix devShell that is configured with working
+versions of all the tools used in this README. If you have Nix installed, you can
+use `nix develop` to start the devShell with:
+
+----
+nix develop
+----
+
+If you do not have Nix, you will need to install `lima`, `deloy-rs`, Java 25, etc.
+
+=== Set Up SSH Access
+
+Add the following to `~/.ssh/config`:
+
+[source, nix]
+----
+Host lima-nixbitcoin-regtest
+  Include ~/.lima/nixbitcoin-regtest/ssh.config
+----
+
+=== Initial Deployment
+
+[source, bash]
+----
+limactl start --yes --name=nixbitcoin-regtest lima-nixbitcoin-regtest.yaml
+deploy .#nixbitcoin-regtest
+limactl restart nixbitcoin-regtest           # restart for hostname change, etc.
+----
+
+=== Updating
+
+----
+deploy .#nixbitcoin-regtest
+----
+
+=== C-Lightning
+
+==== Access from a Shell on the VM:
+
+. Connect to the server:
++
+----
+ssh -A lima-nixbitcoin-regtest
+----
+. Access the JSON-RPC API (on a Unix socket) with `lightning-cli`:
++
+----
+lightning-cli getinfo
+lightning-cli help
+lightning-cli showrunes
+----
+
+==== Access via the REST API from the Host
+
+To connect to the JSON-RPC Rest API from your host workstation:
+
+. Set the shell variable `RUNE`:
++
+----
+RUNE=`limactl --workdir "/" shell nixbitcoin-regtest -- lightning-cli showrunes | jq --raw-output  .runes[0].rune`
+----
+. Call the REST API using `curl`:
++
+----
+curl -k https://localhost:3010/v1/list-methods -H "Rune: $RUNE"
+curl -k -X POST https://localhost:3010/v1/getinfo -H "Rune: $RUNE"
+----
+
+. Or use the provided Java script:
++
+----
+./ClnRpc.java list-methods $RUNE
+./ClnRpc.java getinfo $RUNE
+----
