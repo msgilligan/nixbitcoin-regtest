@@ -1,6 +1,8 @@
 = nixbitcoin-regtest
 
-This is an experimental project to easily configure, deploy, and maintain a Nix Bitcoin RegTest VM for development purposes. It has been tested using Lima to manage the guest VM.
+This is an experimental project to easily configure, deploy, and maintain a Nix Bitcoin RegTest VM for development purposes. It has been tested using https://lima-vm.io[Lima] to manage the guest VM. https://github.com/nixos-lima/nixos-lima[nixos-lima] is used for the Lima base image.
+
+NOTE:: I have tested with Lima on macOS, but since the devShell should install Lima on your Linux host, the scripts should work on Linux, too. You will need to change `system` to `aarch64-linux` to `x86_64-linux` in at least one place. See Issue #1 if you are interested in support for other VM managers.
 
 == Getting Started
 
