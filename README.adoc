@@ -14,7 +14,7 @@ use `nix develop` to start the devShell with:
 nix develop
 ----
 
-If you do not have Nix, you will need to install `lima`, `deloy-rs`, Java 25, etc.
+If you do not have Nix, you will need to install `lima`, `deloy-rs`, etc.  JDK 25 is also installed so you can run the example `ClnRpc.java` script.
 
 === Set Up SSH Access
 
