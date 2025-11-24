@@ -40,13 +40,16 @@
         in {
         default = pkgs.mkShell {
            buildInputs = [
+              pkgs.curl
+              pkgs.jq
+              pkgs-unstable.bitcoind
               pkgs-unstable.lima
               pkgs-unstable.deploy-rs
-              pkgs.curl
               pkgs-unstable.jdk25
-              pkgs.jq
+              (pkgs-unstable.jbang.override { jdk = pkgs-unstable.jdk25; })
             ];
           shellHook = ''
+            alias bcli='bitcoin-cli -conf=$PWD/config/bitcoin.conf'
             echo "Welcome to nixbitcoin-regtest!"
           '';
         };

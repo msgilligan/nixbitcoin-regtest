@@ -43,6 +43,25 @@ limactl restart nixbitcoin-regtest           # restart for hostname change, etc.
 deploy .#nixbitcoin-regtest
 ----
 
+=== Bitcoin Core
+
+The `bcli` alias is initialized by the devshell to `bitcoin-cli` configured to read a configuration from `./config/bitcoin.conf` which will correctly communicate with bitcoind in the guest.
+
+To access with `bitcoin-cli`:
+
+----
+bcli getblockcount
+bcli generatetoaddress 1 mwQA8f4pH23BfHyy4zf8mgAyeNu5uoy6GU
+----
+
+=== Electrs
+
+Make sure at least one block has been mined by `bitcoind` with `generatetoaddress`. Then you can run:
+
+----
+./ElectrsRpc.java
+----
+
 === C-Lightning
 
 ==== Access from a Shell on the VM:
