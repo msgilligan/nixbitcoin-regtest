@@ -59,7 +59,7 @@ bcli generatetoaddress 1 mwQA8f4pH23BfHyy4zf8mgAyeNu5uoy6GU
 Make sure at least one block has been mined by `bitcoind` with `generatetoaddress`. Then you can run:
 
 ----
-./ElectrsRpc.java
+./scripts/ElectrsRpc.java
 ----
 
 === C-Lightning
@@ -98,6 +98,6 @@ curl -k -X POST https://localhost:3010/v1/getinfo -H "Rune: $RUNE"
 . Or use the provided Java script:
 +
 ----
-./ClnRpc.java list-methods $RUNE
-./ClnRpc.java getinfo $RUNE
+./scripts/ClnRpc.java list-methods $RUNE
+./scripts/ClnRpc.java getinfo $RUNE
 ----
