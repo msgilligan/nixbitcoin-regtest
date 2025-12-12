@@ -17,6 +17,7 @@
     enable = true;
     # `network` is a read-only setting that is set to "regtest" when `regtest = true`
     regtest = true;
+    listen = true;
     rpc.address = "0.0.0.0"; # Listen to RPC connections on all interfaces
 
     rpc.allowip = [
@@ -32,6 +33,10 @@
     # Using ZMQ port recommendations from:  https://github.com/ConsensusJ/btcproxy/blob/master/doc/config.adoc
     zmqpubrawblock = nixpkgs.lib.mkForce "tcp://0.0.0.0:${toString zmqPorts.pubrawblock}";
     zmqpubrawtx = nixpkgs.lib.mkForce "tcp://0.0.0.0:${toString zmqPorts.pubrawtx}";
+
+    extraConfig = ''
+      peerbloomfilters=1
+    '';
   };
 
   services.clightning = {
