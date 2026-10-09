@@ -28,6 +28,8 @@
       bitcoinrpc.passwordHMAC = "${localConfig.rpcHMAC}";
     };
 
+    # Note that `txindex` appears to be automatically set when in regtest mode
+
     tor.enforce = false; # Set this if you're using the `secure-node.nix` template
 
     # Using ZMQ port recommendations from:  https://github.com/ConsensusJ/btcproxy/blob/master/doc/config.adoc
