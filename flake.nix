@@ -2,13 +2,13 @@
   description = "Nix Bitcoin RegTest VM Flake";
 
   inputs = {
-    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
+    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/v0.0.139";
 
     nixpkgs.follows = "nix-bitcoin/nixpkgs";
     nixpkgs-unstable.follows = "nix-bitcoin/nixpkgs-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-lima = {

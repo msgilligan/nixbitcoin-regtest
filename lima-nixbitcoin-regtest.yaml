@@ -1,10 +1,10 @@
 images:
-  - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.0.3/nixos-lima-v0.0.3-aarch64.qcow2"
+  - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.2.2/nixos-lima-v0.2.2-aarch64.qcow2"
     arch: "aarch64"
-    digest: "sha512:809bd6bf46e27719eb69cc248e31a6c98725415976f8f0111b86228148a4379ea05e7405930c086487c9d51961e8776f61744175f33423ce3508e74a7f1a87c4"
-  - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.0.3/nixos-lima-v0.0.3-x86_64.qcow2"
+    digest: "sha512:bfcb703cdbad28cfd27438dc009408a859f3c4f575d3598d9627ea712c66128e0fa015de2010ce42bb724abc49f45029a4fc81891fb1a04c567378a6fdf31903"
+  - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.2.2/nixos-lima-v0.2.2-x86_64.qcow2"
     arch: "x86_64"
-    digest: "sha512:d7e6a9c9519d94e006af40f689b98c235624bcc5c32f13ad4fe6c6ae411db4a1d6f5415135cd06665fc6eccd4c857d64512c28ec76cd04bfdfbd791408c57eb6"
+    digest: "sha512:cdf15475c6f799d3a355da50147fa81316e43e159b1b2e76eb21046f9fe8499770840ef876daaf85a2f5eb3a73445c4fa87d0337533fdf6f116d80c40806fbc9"
 
 cpus: 8
 
@@ -17,9 +17,11 @@ mounts:
 memory: 4GiB
 disk: 25GiB
 
-rosetta:
-  enabled: true
-  binfmt: true
+vmOpts:
+  vz:
+    rosetta:
+      enabled: true
+      binfmt: true
 
 networks:
    - lima: user-v2
