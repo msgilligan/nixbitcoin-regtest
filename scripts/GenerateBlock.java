@@ -1,7 +1,7 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //JAVA 25+
 //REPOS mavencentral, consensusj=https://gitlab.com/api/v4/projects/8482916/packages/maven
-//DEPS com.msgilligan:cj-btc-jsonrpc:0.7.0-alpha3
+//DEPS com.msgilligan:cj-btc-jsonrpc:0.7.0-beta3
 //DEPS org.slf4j:slf4j-jdk14:2.0.17
 
 import org.bitcoinj.utils.BriefLogFormatter;
