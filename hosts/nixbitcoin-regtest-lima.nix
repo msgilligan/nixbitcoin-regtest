@@ -19,7 +19,7 @@
       extraGroups = [
         "wheel"      # Allows the user to use 'sudo'
       ];
-      home = "/home/${localConfig.userAccountName}.linux";  # Lima appends .linux to homedir by default
+      home = "/home/${localConfig.userAccountName}.guest";  # Lima appends .guest to homedir by default
     };
 
     # Using Flakes is highly-recommended, maybe even required.
@@ -61,5 +61,5 @@
 
     # The usual warnings about changing `stateVersion` apply. Make sure to find and read them
     # before changing this value.
-    system.stateVersion = "25.05";
+    system.stateVersion = "26.05";
 }
