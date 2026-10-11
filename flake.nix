@@ -2,7 +2,7 @@
   description = "Nix Bitcoin RegTest VM Flake";
 
   inputs = {
-    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/v0.0.139";
+    nix-bitcoin.url = "github:bitcoinix/bitcoinix/master";
 
     nixpkgs.follows = "nix-bitcoin/nixpkgs";
     nixpkgs-unstable.follows = "nix-bitcoin/nixpkgs-unstable";
