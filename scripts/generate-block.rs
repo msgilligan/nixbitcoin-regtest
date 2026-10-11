@@ -3,6 +3,9 @@
 //! [dependencies]
 //! bitcoin = "0.32.7"
 //! corepc-client = { version = "0.10.0", features = ["client-sync"] }
+//!
+//! [lints.cargo]
+//! non_kebab_case_bins = "allow"
 //! ```
 
 use bitcoin::address::{Address, NetworkUnchecked};
